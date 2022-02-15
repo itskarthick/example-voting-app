@@ -1,15 +1,16 @@
 pipeline{
     agent any
      stages {
-        stage('Build') {
+        stage('Git Checkout') {
           steps {
-            echo "Building"
-	    checkout scm
+            echo "Checkout"
+            checkout scm
           }
         }
-        stage('Test'){
+        stage('Building Docker Image'){
             steps{
                 echo 'Testing'
+                sh 'docker --version'
             }
         }
         stage('Deploy'){
