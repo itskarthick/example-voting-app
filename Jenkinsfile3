@@ -19,9 +19,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "eval \$(aws ecr get-login --no-include-email --region us-east-1) && sleep 2"
-                sh "cd vote && docker build . -t 635145294553.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
-                sh "docker push 635145294553.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
+                sh "eval \$aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 523275365373.dkr.ecr.us-east-1.amazonaws.com) && sleep 2"
+                sh "cd vote && docker build . -t jenkins-build"
+                sh "docker tag jenkins-build:latest 523275365373.dkr.ecr.us-east-1.amazonaws.com/jenkins-build:latest"
+                sh "docker push 523275365373.dkr.ecr.us-east-1.amazonaws.com/jenkins-build:latest"
             }
         }
         }
