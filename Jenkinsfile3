@@ -23,7 +23,7 @@ pipeline {
              //   sh "cd vote && docker build -t jenkins-build ."
              //   sh "docker tag jenkins-build:latest 523275365373.dkr.ecr.us-east-1.amazonaws.com/jenkins-build:latest"
              //   sh "docker push 523275365373.dkr.ecr.us-east-1.amazonaws.com/jenkins-build:latest"
-                  sh "echo hello"
+                  sh "aws --version"
             }
         }
         }
